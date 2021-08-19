@@ -18,6 +18,6 @@ def getting_ip(row):
 
 @route_gate.route('/', methods=['GET'])
 def index():
-    ip = request.environ['REMOTE_ADDR']
+    ip = request.headers['X-Forwarded-For']
     print('Страна:', getting_ip(ip).get('country_name'))
     return 'hello'
